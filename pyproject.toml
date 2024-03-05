@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "remote-control"
+version = "0.1.0"
+description = ""
+authors = ["xXLAOKOONXx"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+PyAutoGUI = "^0.9.54"
+dash = "^2.16.0"
+dash-bootstrap-components = "^1.5.0"
+pyinstaller = "^6.4.0"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^6.29.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
