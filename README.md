@@ -40,3 +40,5 @@ poetry run python remote-control/app.py
 ```
 
 ### Use exe
+
+You can find the latest exe in the releases.
