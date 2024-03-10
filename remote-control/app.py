@@ -5,6 +5,7 @@ import dash_bootstrap_components as dbc
 import dash
 from tkinter import filedialog
 import pyautogui
+import playsound
 
 # Select folder
 FOLDER = Path(filedialog.askdirectory())
@@ -22,10 +23,22 @@ def get_playlist_store_id(playlist:str):
 def get_playlist_button_id(playlist:str):
     return {'type': 'playlist-button', 'playlist': playlist}
 
+def get_effect_store_id(effect:str):
+    return {'type': 'effect-data', 'effect': effect}
+
+def get_effect_button_id(effect:str):
+    return {'type': 'effect-button', 'effect': effect}
+
 def build_playlist_button(display_name:str, full_path:str):
     return html.Div([
         dbc.Button(display_name, id=get_playlist_button_id(display_name), n_clicks=0, style={'margin': '5px'}),
         dcc.Store(id=get_playlist_store_id(display_name), data=full_path)    
+    ])
+
+def build_effect_button(display_name:str, full_path:str):
+    return html.Div([
+        dbc.Button(display_name, id=get_effect_button_id(display_name), n_clicks=0, style={'margin': '5px'}),
+        dcc.Store(id=get_effect_store_id(display_name), data=full_path)    
     ])
 
 @app.callback(
@@ -36,6 +49,16 @@ def build_playlist_button(display_name:str, full_path:str):
 def start_file(n_clicks, playlist):
     if n_clicks:
         os.startfile(playlist)
+    return dash.no_update
+
+@app.callback(
+    Output(get_effect_button_id(MATCH), 'style'),
+    [Input(get_effect_button_id(MATCH), 'n_clicks'),
+     State(get_effect_store_id(MATCH), 'data')]
+)
+def start_file(n_clicks, effect):
+    if n_clicks:
+        playsound.playsound(effect)
     return dash.no_update
 
 @app.callback(
@@ -52,6 +75,15 @@ for file in FOLDER.glob(f'*.{FILE_TYPE}'):
     display_name = file.stem.strip()
     playlists.append(build_playlist_button(display_name, str(file)))
 
+effects = []
+
+for file in FOLDER.glob('*.mp3'):
+    display_name = file.stem.strip()
+    effects.append(build_effect_button(display_name, str(file)))
+for file in FOLDER.glob('*.wav'):
+    display_name = file.stem.strip()
+    effects.append(build_effect_button(display_name, str(file)))
+
 app.title = 'Remote-Control'
 
 app.layout = html.Div(id='full-body',
@@ -61,10 +93,14 @@ app.layout = html.Div(id='full-body',
             dbc.Button('Play/Pause', id='play-pause', n_clicks=0, style={'margin': '5px'}),
         ]),
         dbc.Row([
+            dbc.Col([html.Div('Playlists', style={'textAlign': 'center', 'fontSize': '2rem'})])]),
+        dbc.Row([
             dbc.Col([html.Div(id='playlist-buttons',
             children=
         playlists)]),
-        ])
+        ]),
+        dbc.Row([dbc.Col([html.Div('Effects')])]),
+        dbc.Row([dbc.Col([html.Div(id='effect-buttons',children=effects)])]),
 ], 
 )
 

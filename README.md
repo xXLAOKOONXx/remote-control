@@ -1,6 +1,14 @@
 # Remote Controller
 
-This is web app to start files from a different device.
+This is web app to control another devices audio capabilities.  
+This is useful in case your main audio device is a computer and you do not want the display to be on.
+
+Current functionalities:
+
+- Press Play/Pause Button
+- Start a file (preferably a playlist)
+- Play a sound effect (eg roaring of a dragon while having a dragon encounter on your P&P table)
+  - Supported file formats are WAV and mp3
 
 ## Usage
 
