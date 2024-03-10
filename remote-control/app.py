@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import dash
 from tkinter import filedialog
 import pyautogui
-import playsound
+import pygame
 
 # Select folder
 FOLDER = Path(filedialog.askdirectory())
@@ -51,6 +51,8 @@ def start_file(n_clicks, playlist):
         os.startfile(playlist)
     return dash.no_update
 
+pygame.mixer.init()
+
 @app.callback(
     Output(get_effect_button_id(MATCH), 'style'),
     [Input(get_effect_button_id(MATCH), 'n_clicks'),
@@ -58,7 +60,8 @@ def start_file(n_clicks, playlist):
 )
 def start_file(n_clicks, effect):
     if n_clicks:
-        playsound.playsound(effect)
+        pygame.mixer.music.load(effect)
+        pygame.mixer.music.play()
     return dash.no_update
 
 @app.callback(
