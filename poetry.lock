@@ -85,7 +85,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7
 
 [[package]]
 name = "comm"
-version = "0.2.1"
+version = "0.2.2"
 description = "Jupyter Python Comm implementation, for usage in ipykernel, xeus-python etc."
 category = "dev"
 optional = false
@@ -99,7 +99,7 @@ test = ["pytest"]
 
 [[package]]
 name = "dash"
-version = "2.16.0"
+version = "2.16.1"
 description = "A Python framework for building reactive web-apps. Developed by Plotly."
 category = "main"
 optional = false
@@ -204,7 +204,7 @@ tests = ["asttokens (>=2.1.0)", "ipython", "pytest", "coverage", "coverage-enabl
 
 [[package]]
 name = "flask"
-version = "3.0.2"
+version = "3.0.3"
 description = "A simple framework for building complex web applications."
 category = "main"
 optional = false
@@ -223,7 +223,7 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "idna"
-version = "3.6"
+version = "3.7"
 description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
 optional = false
@@ -231,7 +231,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-metadata"
-version = "7.0.1"
+version = "7.1.0"
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
@@ -241,13 +241,13 @@ python-versions = ">=3.8"
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx (>=3.5)", "sphinx (<7.2.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
 perf = ["ipython"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "importlib-resources (>=1.3)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff (>=0.2.1)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "jaraco.test (>=5.4)", "pytest-mypy", "importlib-resources (>=1.3)"]
 
 [[package]]
 name = "ipykernel"
-version = "6.29.3"
+version = "6.29.4"
 description = "IPython Kernel for Jupyter"
 category = "dev"
 optional = false
@@ -277,7 +277,7 @@ test = ["flaky", "ipyparallel", "pre-commit", "pytest-asyncio (>=0.23.5)", "pyte
 
 [[package]]
 name = "ipython"
-version = "8.22.2"
+version = "8.23.0"
 description = "IPython: Productive Interactive Computing"
 category = "dev"
 optional = false
@@ -294,19 +294,21 @@ prompt-toolkit = ">=3.0.41,<3.1.0"
 pygments = ">=2.4.0"
 stack-data = "*"
 traitlets = ">=5.13.0"
+typing-extensions = {version = "*", markers = "python_version < \"3.12\""}
 
 [package.extras]
 all = ["ipython", "ipython"]
 black = ["black"]
 doc = ["ipykernel", "setuptools (>=18.5)", "sphinx (>=1.3)", "sphinx-rtd-theme", "sphinxcontrib-jquery", "docrepr", "matplotlib", "stack-data", "typing-extensions", "exceptiongroup", "ipython"]
 kernel = ["ipykernel"]
+matplotlib = ["matplotlib"]
 nbconvert = ["nbconvert"]
 nbformat = ["nbformat"]
 notebook = ["ipywidgets", "notebook"]
 parallel = ["ipyparallel"]
 qtconsole = ["qtconsole"]
 test = ["pytest (<8)", "pytest-asyncio (<0.22)", "testpath", "pickleshare"]
-test_extra = ["ipython", "curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.23)", "pandas", "trio"]
+test-extra = ["ipython", "curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.23)", "pandas", "trio"]
 
 [[package]]
 name = "itsdangerous"
@@ -348,7 +350,7 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "jupyter-client"
-version = "8.6.0"
+version = "8.6.1"
 description = "Jupyter protocol implementation and client libraries"
 category = "dev"
 optional = false
@@ -367,7 +369,7 @@ test = ["coverage", "ipykernel (>=6.14)", "mypy", "paramiko", "pre-commit", "pyt
 
 [[package]]
 name = "jupyter-core"
-version = "5.7.1"
+version = "5.7.2"
 description = "Jupyter core package. A base package on which Jupyter projects rely."
 category = "dev"
 optional = false
@@ -380,7 +382,7 @@ traitlets = ">=5.3"
 
 [package.extras]
 docs = ["myst-parser", "pydata-sphinx-theme", "sphinx-autodoc-typehints", "sphinxcontrib-github-alt", "sphinxcontrib-spelling", "traitlets"]
-test = ["ipykernel", "pre-commit", "pytest", "pytest-cov", "pytest-timeout"]
+test = ["ipykernel", "pre-commit", "pytest-cov", "pytest-timeout", "pytest (<8)"]
 
 [[package]]
 name = "macholib"
@@ -435,7 +437,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "packaging"
-version = "23.2"
+version = "24.0"
 description = "Core utilities for Python packages"
 category = "main"
 optional = false
@@ -443,15 +445,15 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "parso"
-version = "0.8.3"
+version = "0.8.4"
 description = "A Python Parser"
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
-testing = ["docopt", "pytest (<6.0.0)"]
+qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
+testing = ["docopt", "pytest"]
 
 [[package]]
 name = "pefile"
@@ -474,7 +476,7 @@ ptyprocess = ">=0.5"
 
 [[package]]
 name = "pillow"
-version = "10.2.0"
+version = "10.3.0"
 description = "Python Imaging Library (Fork)"
 category = "main"
 optional = false
@@ -502,7 +504,7 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest-cov (>=4.1)", "pytes
 
 [[package]]
 name = "plotly"
-version = "5.19.0"
+version = "5.20.0"
 description = "An open-source, interactive data visualization library for Python"
 category = "main"
 optional = false
@@ -573,11 +575,11 @@ pytweening = ">=1.0.4"
 
 [[package]]
 name = "pycparser"
-version = "2.21"
+version = "2.22"
 description = "C parser in Python"
 category = "dev"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.8"
 
 [[package]]
 name = "pygame"
@@ -612,7 +614,7 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyinstaller"
-version = "6.4.0"
+version = "6.6.0"
 description = "PyInstaller bundles a Python application and all its dependencies into a single package."
 category = "main"
 optional = false
@@ -623,16 +625,16 @@ altgraph = "*"
 macholib = {version = ">=1.8", markers = "sys_platform == \"darwin\""}
 packaging = ">=22.0"
 pefile = {version = ">=2022.5.30", markers = "sys_platform == \"win32\""}
-pyinstaller-hooks-contrib = ">=2024.0"
+pyinstaller-hooks-contrib = ">=2024.3"
 pywin32-ctypes = {version = ">=0.2.1", markers = "sys_platform == \"win32\""}
 
 [package.extras]
 completion = ["argcomplete"]
-hook_testing = ["pytest (>=2.7.3)", "execnet (>=1.5.0)", "psutil"]
+hook-testing = ["pytest (>=2.7.3)", "execnet (>=1.5.0)", "psutil"]
 
 [[package]]
 name = "pyinstaller-hooks-contrib"
-version = "2024.2"
+version = "2024.4"
 description = "Community maintained hooks for PyInstaller"
 category = "main"
 optional = false
@@ -651,7 +653,7 @@ python-versions = "*"
 
 [[package]]
 name = "pyobjc-core"
-version = "10.1"
+version = "10.2"
 description = "Python<->ObjC Interoperability Module"
 category = "main"
 optional = false
@@ -659,26 +661,26 @@ python-versions = ">=3.8"
 
 [[package]]
 name = "pyobjc-framework-cocoa"
-version = "10.1"
+version = "10.2"
 description = "Wrappers for the Cocoa frameworks on macOS"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-pyobjc-core = ">=10.1"
+pyobjc-core = ">=10.2"
 
 [[package]]
 name = "pyobjc-framework-quartz"
-version = "10.1"
+version = "10.2"
 description = "Wrappers for the Quartz frameworks on macOS"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-pyobjc-core = ">=10.1"
-pyobjc-framework-Cocoa = ">=10.1"
+pyobjc-core = ">=10.2"
+pyobjc-framework-Cocoa = ">=10.2"
 
 [[package]]
 name = "pyperclip"
@@ -795,15 +797,15 @@ six = ">=1.7.0"
 
 [[package]]
 name = "rubicon-objc"
-version = "0.4.7"
+version = "0.4.8"
 description = "A bridge between an Objective C runtime environment and Python."
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.extras]
-dev = ["pre-commit (==3.5.0)", "pytest (==7.4.2)", "pytest-tldr (==0.2.5)", "setuptools-scm[toml] (==8.0.4)", "tox (==4.11.3)"]
-docs = ["furo (==2023.9.10)", "pyenchant (==3.2.2)", "sphinx-tabs (==3.4.1)", "sphinx-autobuild (==2021.3.14)", "sphinx-copybutton (==0.5.2)", "sphinxcontrib-spelling (==8.0.0)", "sphinx (==7.1.2)", "sphinx (==7.2.6)"]
+dev = ["pytest (==8.1.1)", "pytest-tldr (==0.2.5)", "setuptools-scm (==8.0.4)", "tox (==4.14.2)", "pre-commit (==3.5.0)", "pre-commit (==3.7.0)"]
+docs = ["furo (==2024.1.29)", "pyenchant (==3.2.2)", "sphinx-tabs (==3.4.5)", "sphinx-copybutton (==0.5.2)", "sphinxcontrib-spelling (==8.0.0)", "sphinx (==7.1.2)", "sphinx-autobuild (==2021.3.14)", "sphinx (==7.2.6)", "sphinx-autobuild (==2024.2.4)"]
 
 [[package]]
 name = "six"
@@ -850,7 +852,7 @@ python-versions = ">= 3.8"
 
 [[package]]
 name = "traitlets"
-version = "5.14.1"
+version = "5.14.2"
 description = "Traitlets Python configuration system"
 category = "dev"
 optional = false
@@ -858,11 +860,11 @@ python-versions = ">=3.8"
 
 [package.extras]
 docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
-test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest-mock", "pytest-mypy-testing", "pytest (>=7.0,<7.5)"]
+test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest-mock", "pytest-mypy-testing", "pytest (>=7.0,<8.1)"]
 
 [[package]]
 name = "typing-extensions"
-version = "4.10.0"
+version = "4.11.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
 category = "main"
 optional = false
@@ -892,7 +894,7 @@ python-versions = "*"
 
 [[package]]
 name = "werkzeug"
-version = "3.0.1"
+version = "3.0.2"
 description = "The comprehensive WSGI web application library."
 category = "main"
 optional = false
@@ -906,15 +908,15 @@ watchdog = ["watchdog (>=2.3)"]
 
 [[package]]
 name = "zipp"
-version = "3.17.0"
+version = "3.18.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.extras]
-docs = ["sphinx (>=3.5)", "sphinx (<7.2.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff", "jaraco.itertools", "jaraco.functools", "more-itertools", "big-o", "pytest-ignore-flaky", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff (>=0.2.1)", "jaraco.itertools", "jaraco.functools", "more-itertools", "big-o", "pytest-ignore-flaky", "pytest-mypy"]
 
 [metadata]
 lock-version = "1.1"
@@ -972,10 +974,7 @@ matplotlib-inline = []
 mouseinfo = []
 nest-asyncio = []
 packaging = []
-parso = [
-    {file = "parso-0.8.3-py2.py3-none-any.whl", hash = "sha256:c001d4636cd3aecdaf33cbb40aebb59b094be2a74c556778ef5576c175e19e75"},
-    {file = "parso-0.8.3.tar.gz", hash = "sha256:8c07be290bb59f03588915921e29e8a50002acaf2cdc5fa0e0114f91709fafa0"},
-]
+parso = []
 pefile = []
 pexpect = []
 pillow = []
@@ -992,10 +991,7 @@ pure-eval = [
     {file = "pure_eval-0.2.2.tar.gz", hash = "sha256:2b45320af6dfaa1750f543d714b6d1c520a1688dec6fd24d339063ce0aaa9ac3"},
 ]
 pyautogui = []
-pycparser = [
-    {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
-    {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
-]
+pycparser = []
 pygame = []
 pygetwindow = []
 pygments = []
