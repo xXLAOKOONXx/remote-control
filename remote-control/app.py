@@ -11,8 +11,10 @@ import pygame
 FOLDER = Path(filedialog.askdirectory())
 
 # Select file type
-FILE_TYPE = 'fpl'
-FILE_TYPE = input('Enter file type (defaults to "fpl"): ') or FILE_TYPE
+FILE_TYPES = ['fpl', 'm3u']
+file_types_input = input('Enter file types seperated by ";" (defaults to "fpl" andd "m3u"): ')
+if file_types_input:
+    FILE_TYPES = [filetype.strip() for filetype in file_types_input.split(';')]
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],
               suppress_callback_exceptions=True)
@@ -74,9 +76,10 @@ def play_pause(n_clicks):
     return dash.no_update
 
 playlists = []
-for file in FOLDER.glob(f'*.{FILE_TYPE}'):
-    display_name = file.stem.strip()
-    playlists.append(build_playlist_button(display_name, str(file)))
+for file_type in FILE_TYPES:
+    for file in FOLDER.glob(f'*.{file_type}'):
+        display_name = file.stem.strip()
+        playlists.append(build_playlist_button(display_name, str(file)))
 
 effects = []
 
